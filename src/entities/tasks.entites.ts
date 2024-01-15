@@ -1,19 +1,19 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('tasks')
-export class TasksEntity extends BaseEntity {
+export class TaskEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({default :Date.now()})
+  @Column()
   name_task: string;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   create_at: Date;
 
-  @Column({default :Date.now()})
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   finish_at: Date;
 
-  @Column({default : false})
-  done?: boolean;
+  @Column({ default: false })
+  done: boolean;
 }
